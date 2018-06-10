@@ -29,7 +29,7 @@ export const addBinaryInteger = (binaryA: number[], binaryB: number[]) => {
   let sum: number[] = [];
 
   let carry = 0;
-  // tslint:disable-next-line:no-increment-decrement
+  // tslint:disable-next-line:no-increment-decrement ban-comma-operator
   for (; i >= 0 && j >= 0; i-- , j--) {
     const result = addOneBit(binaryA[i], binaryB[j]);
     sum = [result[0], ...sum];
