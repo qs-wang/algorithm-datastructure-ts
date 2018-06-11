@@ -1,5 +1,5 @@
-// tslint:disable-next-line:no-require-imports
-import lamlog = require('lamlog');
+// tslint:disable-next-line:no-require-imports no-var-requires
+const lamlog = require('lamlog');
 
 export const createLogger = (loggerName: string, loglevel?: string) => {
   return new lamlog({

@@ -1,5 +1,5 @@
-import { insertSort } from '../insertSort';
 import { createLogger } from '../../utils/loggerfacory';
+import { insertSort } from '../insertSort';
 
 const logger = createLogger('com.qiangswa.algjs.inertSort');
 describe('The insert sort', () => {
@@ -13,7 +13,7 @@ describe('The insert sort', () => {
 
     expect(result).toEqual([1, 2, 3, 4, 5, 6]);
 
-  })
+  });
 
   it('should sort the array from excerciese 2.1-1', () => {
     const values = [31, 41, 59, 26, 41, 58];
@@ -22,7 +22,7 @@ describe('The insert sort', () => {
     const result = insertSort(values);
 
     expect(result).toEqual([26, 31, 41, 41, 58, 59]);
-  })
+  });
 
   it('should throw the error', () => {
     const values = [];
@@ -34,6 +34,5 @@ describe('The insert sort', () => {
     } catch (error) {
       logger.debug('Throw error', error);
     }
-  })
-
-})
+  });
+});
