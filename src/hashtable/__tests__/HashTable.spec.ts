@@ -25,7 +25,7 @@ describe('HashTable', () => {
     expect(hash.get('key')).toBeUndefined();
   });
 
-  fit('should iterator the keys', () => {
+  it('should iterator the keys', () => {
     const hash = new HashTable();
     expect(hash.put('key', 'hello')).toBeTruthy();
     expect(hash.put('key1', 'hello1')).toBeTruthy();
@@ -34,4 +34,29 @@ describe('HashTable', () => {
     expect(keys).toEqual(['key1', 'key']);
   });
 
+  it('should not accept the null key', () => {
+    const hash = new HashTable();
+    expect(hash.put(undefined, 'hello')).toBeFalsy();
+
+    const [...keys] = hash.kyes();
+    expect(keys).toEqual([]);
+  });
+
+  it('should not accept the null value', () => {
+    const hash = new HashTable();
+    expect(hash.put('key', undefined)).toBeFalsy();
+
+    const [...keys] = hash.kyes();
+    expect(keys).toEqual([]);
+  });
+
+  it('should not get anything with the null key', () => {
+    const hash = new HashTable();
+    expect(hash.get(undefined)).toBeFalsy();
+  });
+
+  it('should not remove anything with the null key', () => {
+    const hash = new HashTable();
+    expect(hash.remove(undefined)).toBeFalsy();
+  });
 });
