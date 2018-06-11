@@ -4,8 +4,6 @@
     "module": "commonjs",
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
-    "jsx": "preserve",
-    "allowJs": true,
     "importHelpers": true,
     "alwaysStrict": true,
     "sourceMap": true,

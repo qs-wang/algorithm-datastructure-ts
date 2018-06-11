@@ -1,8 +1,8 @@
-import { Stack } from '../stack/stack';
-import { createLogger } from '../utils/loggerfacory';
+import { Stack } from '../stack/Stack';
+// import { createLogger } from '../utils/loggerfacory';
 // import { addBinaryInteger } from './binaryAdd';
 
-const logger = createLogger('algjs.DecimalToBinary');
+// const logger = createLogger('algjs.DecimalToBinary');
 
 const positiveDecimalToBinary = (decimal: number) => {
 

@@ -50,10 +50,10 @@ describe('SingleLinkedList', () => {
     expect(list.size()).toBe(3);
     list.removeAt(2);
     expect(list.size()).toBe(2);
-    expect(list.toString()).toEqual('hello0,hello1,hello2,');
+    expect(list.toString()).toEqual('hello0,hello1,');
   });
 
-  it('should remove the element at position 2', () => {
+  it('should remove the element at position 1', () => {
     const list = new LinkedList<string>();
     // tslint:disable-next-line:no-increment-decrement
     for (let i = 0; i < 3; i++) {
@@ -63,7 +63,33 @@ describe('SingleLinkedList', () => {
     expect(list.size()).toBe(3);
     list.removeAt(1);
     expect(list.size()).toBe(2);
-    logger.debug('LinkedList', list.toString());
+    expect(list.toString()).toEqual('hello0,hello2,');
+  });
+
+  it('should remove the element hello2', () => {
+    const list = new LinkedList<string>();
+    // tslint:disable-next-line:no-increment-decrement
+    for (let i = 0; i < 3; i++) {
+      list.addLast(`hello${i}`);
+    }
+
+    expect(list.size()).toBe(3);
+    list.remove('hello2');
+    expect(list.size()).toBe(2);
+    expect(list.toString()).toEqual('hello0,hello1,');
+  });
+
+  it('should not remove the element hello5', () => {
+    const list = new LinkedList<string>();
+    // tslint:disable-next-line:no-increment-decrement
+    for (let i = 0; i < 3; i++) {
+      list.addLast(`hello${i}`);
+    }
+
+    expect(list.size()).toBe(3);
+    list.remove('hello5');
+    expect(list.size()).toBe(3);
+    expect(list.toString()).toEqual('hello0,hello1,hello2,');
   });
 
   it('should get the element at position 1', () => {

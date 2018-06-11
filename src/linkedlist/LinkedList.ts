@@ -93,7 +93,25 @@ export class LinkedList<T> implements ILinkedList<T> {
   }
 
   public remove(element: T) {
-    throw new Error('Method not implemented.');
+    let prev = this.head;
+    let curr = this.head.next;
+
+    while (curr !== undefined && !this.equalFn(curr.value, element)) {
+      prev = curr;
+      curr = curr.next;
+    }
+
+    if (!curr) {
+      return undefined;
+    }
+
+    const temp = curr;
+    prev.next = temp.next;
+    curr.next = undefined;
+
+    this._length -= 1;
+
+    return curr.value;
   }
 
   public removeLast(): T {
@@ -146,9 +164,9 @@ export class LinkedList<T> implements ILinkedList<T> {
       throw new Error('The position is over the length of the list');
     }
 
-    const curr = this.movePointTo(position);
+    const curr = this.movePointTo(position - 1);
 
-    const temp = curr;
+    const temp = curr.next;
 
     curr.next = temp.next;
     temp.next = undefined;
