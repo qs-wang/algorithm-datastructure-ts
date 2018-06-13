@@ -43,7 +43,14 @@ export class LinkedList<T> implements ILinkedList<T> {
     this._length = 0;
     this.equalFn = equal;
   }
-
+  // tslint:disable-next-line:function-name
+  public *[Symbol.iterator]() {
+    let curr = this.head.next;
+    while (curr) {
+      yield curr.value;
+      curr = curr.next;
+    }
+  }
   public getFirst(): T {
     if (this._length === 0) {
       throw new Error('Empty list error');
@@ -115,7 +122,7 @@ export class LinkedList<T> implements ILinkedList<T> {
   }
 
   public removeLast(): T {
-    return this.removeAt(this._length - 1);
+    return this.removeAt(this._length);
   }
 
   public addFirst(e: T) {
@@ -123,7 +130,7 @@ export class LinkedList<T> implements ILinkedList<T> {
   }
 
   public addLast = (e: T) => {
-    this.add(e, this._length - 1);
+    this.add(e, this._length);
   }
 
   public size(): number {
@@ -140,11 +147,11 @@ export class LinkedList<T> implements ILinkedList<T> {
       throw new Error('The position must be greater than  or equal -1');
     }
 
-    if (position >= this._length) {
+    if (position > this._length) {
       throw new Error('The position is over the length of the list');
     }
 
-    const curr = this.movePointTo(position);
+    const curr = this.movePointTo(position - 1);
 
     const temp = curr.next;
     curr.next = new LinkedNode(e);

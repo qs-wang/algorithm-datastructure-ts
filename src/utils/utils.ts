@@ -15,7 +15,7 @@ export function defaultToString(item: any): string {
   return item.toString();
 }
 
-export function defaultToHashCode<K>(key: K) {
+export function loseloseHashCode<K>(key: K) {
 
   if (typeof key === 'number') {
     return key;
@@ -28,4 +28,15 @@ export function defaultToHashCode<K>(key: K) {
   }
 
   return hash % 37;
+}
+
+export function djb2HashCode<K>(key: K) {
+  const tableKey = defaultToString(key);
+  let hash = 5381;
+  // tslint:disable-next-line:no-increment-decrement
+  for (let i = 0; i < tableKey.length; i++) {
+    hash = (hash * 33) + tableKey.charCodeAt(i);
+  }
+
+  return hash % 1013;
 }

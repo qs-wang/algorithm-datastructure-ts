@@ -209,4 +209,19 @@ describe('SingleLinkedList', () => {
     const value = list.indexOf('hello5');
     expect(value).toBe(-1);
   });
+
+  it('should loop the list', () => {
+    const list = new LinkedList<string>();
+    // tslint:disable-next-line:no-increment-decrement
+    for (let i = 0; i < 3; i++) {
+      list.addLast(`hello${i}`);
+    }
+
+    let c = 0;
+    for (const l of list) {
+      logger.debug(l);
+      c += 1;
+    }
+    expect(c).toBe(3);
+  });
 });

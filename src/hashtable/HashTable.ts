@@ -1,5 +1,5 @@
 // import { createLogger } from '../utils/loggerfacory';
-import { defaultToHashCode } from '../utils/utils';
+import { loseloseHashCode } from '../utils/utils';
 import { Entry } from './Entry';
 
 // const logger = createLogger('ajgjs.HashTable');
@@ -13,7 +13,7 @@ export class HashTable<K, V> {
     [key: string]: Entry<K, V>;
   };
 
-  constructor(protected hashFn: (key: K) => number = defaultToHashCode) {
+  constructor(protected hashFn: (key: K) => number = loseloseHashCode) {
     this.table = {};
   }
 
