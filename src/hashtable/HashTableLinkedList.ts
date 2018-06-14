@@ -4,6 +4,10 @@ import { loseloseHashCode } from '../utils/utils';
 import { Entry } from './Entry';
 // const logger = createLogger('ajgjs.HashTableLinkedList');
 
+/**
+ * Implements the HashTable datastructure,
+ * uses LinkedList for handling colision
+ */
 export class HashTableLinkedList<K, V> {
   private table: {
     [key: string]: LinkedList<Entry<K, V>>;

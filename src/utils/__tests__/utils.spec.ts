@@ -1,5 +1,5 @@
 import {createLogger} from '../loggerfacory';
-import { defaultToHashCode, defaultToString } from '../utils';
+import { defaultToString, loseloseHashCode } from '../utils';
 
 const logger = createLogger('algjs.utils.test');
 
@@ -9,7 +9,7 @@ describe('utils', () => {
   });
 
   it('should generate the hashCode ', () => {
-    const hashCode = defaultToHashCode('key');
+    const hashCode = loseloseHashCode('key');
     logger.info('hashCode', hashCode);
 
   });
