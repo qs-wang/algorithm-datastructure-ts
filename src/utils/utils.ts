@@ -40,3 +40,21 @@ export function djb2HashCode<K>(key: K) {
 
   return hash % 1013;
 }
+
+export enum Compare {
+  LESS_THAN = -1,
+  BIGGER_THAN = 1,
+  EQUALS = 0,
+}
+
+export const numberComparator = (a: number, b: number) => {
+  if (a > b) {
+    return Compare.BIGGER_THAN;
+  } else if (a === b) {
+    return Compare.EQUALS;
+  } else if (a < b) {
+    return Compare.LESS_THAN;
+  }
+
+  return Compare.LESS_THAN;
+};
